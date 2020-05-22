@@ -1,0 +1,19 @@
+{
+  "name": "uname-generator",
+  "version": "0.1.0",
+  "description": "uname-generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "uname-generator"
+  },
+  "keywords": [
+    "uname",
+    "generator"
+  ],
+  "author": "kvnlry",
+  "license": "GPL-3.0-or-later"
+}
