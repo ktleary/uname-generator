@@ -1,34 +1,39 @@
+const {
+  addIndex,
+  compose,
+  concat,
+  dec,
+  equals,
+  length,
+  lt,
+  modulo,
+  or,
+  range,
+  reduce,
+} = require("ramda");
+const { Random } = require("random-js");
+const random = new Random();
+
 const beautifulConsonants = "bcdfghjklmnprstyw";
 const vowels = "aeiou";
-const all = beautifulConsonants.concat(vowels);
 
-// randomChar :: String -> String
-const randomChar = (string) =>
-  string[Math.floor(Math.random() * string.length)];
+// -- Util -------------
 
-// generateUname :: Number -> String
-function generateUname(length = 8) {
-  if (length < 4) return false;
-  // switch character choice by letter position
-  return Array(length)
-    .fill(0)
-    .reduce((result, _, idx) => {
-      if (idx === 0) {
-        return result.concat(randomChar(all));
-      } else if (idx === 1 || idx === 2) {
-        return result.concat(randomChar(beautifulConsonants));
-      } else if (idx === 3) {
-        return result.concat(randomChar(vowels));
-      } else if (idx % 2 !== 0) {
-        return result.concat(randomChar(vowels));
-      }
-      return result.concat(randomChar(all));
-    }, "");
-}
+const decStrLen = compose(dec, length);
+const lt2OrEven = (x) => or(lt(x, 2), equals(modulo(x, 2), 0));
+const selLetterList = (pos) => (lt2OrEven(pos) ? beautifulConsonants : vowels);
+const randomChar = (str) => str[random.integer(0, decStrLen(str))];
+const selRndmChar = compose(randomChar, selLetterList);
+
+// unameReducer :: (String, Number) -> String
+const unameReducer = (uname, idx) => concat(uname, selRndmChar(idx));
+
+// generateUname = (Number) -> String
+const generateUname = (length) => reduce(unameReducer, "", range(0, length));
 
 function main() {
   const writeUname = (uname) => console.log(uname);
-  const unameLength = 8;
+  const unameLength = 9;
   const uname = generateUname(unameLength);
   return writeUname(uname);
 }

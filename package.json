@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "author": "kvnlry",
   "devDependencies": {
-    "eslint": "^7.18.0",
+    "eslint": "^7.19.0",
     "eslint-plugin-fp": "^2.3.0"
   },
   "keywords": [
@@ -19,5 +19,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ramda": "^0.27.1",
+    "random-js": "^2.1.0"
   }
 }
