@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "author": "kvnlry",
   "devDependencies": {
-    "eslint": "^7.19.0",
+    "eslint": "^7.20.0",
     "eslint-plugin-fp": "^2.3.0"
   },
   "keywords": [

@@ -33,7 +33,7 @@ const generateUname = (length) => reduce(unameReducer, "", range(0, length));
 
 function main() {
   const writeUname = (uname) => console.log(uname);
-  const unameLength = 9;
+  const unameLength = 7;
   const uname = generateUname(unameLength);
   return writeUname(uname);
 }
